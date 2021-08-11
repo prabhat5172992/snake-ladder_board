@@ -8,13 +8,12 @@ function createSLB() {
 
     for(let i=100, j=1; i>0; i--, j++) {
         arr.push(i);
-        if(j%10 ==0){
+        if(j%10 === 0){
             if(rows.length % 2 === 0) {
                 rows.push(arr);
             } else {
                 rows.push(arr.reverse());
             }
-            
             arr = [];
         }
     }
@@ -55,4 +54,4 @@ console.log("Second approach", createSnakeLadderBoard());
 ```
 
 ### Board image
-![Board image](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+![Board image](https://github.com/prabhat5172992/snake-ladder_board/blob/main/board.PNG?raw=true)
