@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Creating snake and ladder board
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### First Approach
+```sh
+function createSLB() {
+    let rows = [];
+    let arr = [];
 
-## Available Scripts
+    for(let i=100, j=1; i>0; i--, j++) {
+        arr.push(i);
+        if(j%10 ==0){
+            if(rows.length % 2 === 0) {
+                rows.push(arr);
+            } else {
+                rows.push(arr.reverse());
+            }
+            
+            arr = [];
+        }
+    }
+    return rows;
+}
 
-In the project directory, you can run:
+console.log("First approach", createSLB());
+```
+### Second Approach
+```sh
+function createSnakeLadderBoard() {
+    const rowsFirstNum = [100, 81, 80, 61, 60, 41, 40, 21, 20, 1];
+    const rows = [];
 
-### `yarn start`
+    while(rows.length < 10) {
+        let num = rowsFirstNum[rows.length];
+        let arr = [];
+        let count = 0;
+        if(count === 10) count = 0;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+        if(rows.length%2 === 0) {
+            while(count < 10) {
+                arr.push(num-count);
+                count += 1;
+            }
+        } else {
+            while(count < 10) {
+                arr.push(num+count);
+                count += 1;
+            }
+        }
+        rows.push(arr);
+    }
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    return rows;
+}
+console.log("Second approach", createSnakeLadderBoard());
+```
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Board image
+![Board image](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
